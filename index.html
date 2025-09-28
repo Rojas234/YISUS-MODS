@@ -1,370 +1,585 @@
 <!DOCTYPE html>
-<html lang="es">  
-<head>  
-  <meta charset="UTF-8">  
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">  
-  <title>YISUS MODS</title>  
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">  
-  <style>  
-    body {  
-      margin: 0;  
-      font-family: Arial, Helvetica, sans-serif;  
-      color: white;  
-      text-align: center;  
-      overflow-x: hidden;  
-      position: relative;  
-    }  
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hilnzo</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+    <style>
+        body {
+            margin: 0;
+            font-family: Arial, Helvetica, sans-serif;
+            color: white;
+            text-align: center;
+            overflow-x: hidden;
+            position: relative;
+        }
 
-    /* Contenedor de fondo */  
-    .background-container {  
-      position: fixed;  
-      top: 0;  
-      left: 0;  
-      width: 100%;  
-      height: 100%;  
-      background: url('https://imgur.com/9YO3We4') no-repeat center center;  
-      background-size: cover;  
-      z-index: -1;  
-    }  
+        /* Contenedor de fondo */
+        .background-container {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: url('https://i.imgur.com/kXp9RhC.jpeg') no-repeat center center;
+            background-size: cover;
+            z-index: -1;
+        }
 
-    h1 {  
-      font-size: 3rem;  
-      margin-top: 20px;  
-      text-shadow: 2px 2px 8px red;  
-      position: relative;  
-      z-index: 2;  
-    }  
+        h1 {
+            font-size: 3rem;
+            margin-top: 20px;
+            text-shadow: 2px 2px 8px red;
+            position: relative;
+            z-index: 2;
+        }
 
-    p {  
-      font-size: 1.3rem;  
-      margin-bottom: 30px;  
-      font-weight: bold;  
-      position: relative;  
-      z-index: 2;  
-    }  
+        p {
+            font-size: 1.3rem;
+            margin-bottom: 30px;
+            font-weight: bold;
+            position: relative;
+            z-index: 2;
+        }
 
-    /* Redes sociales */  
-    .socials {  
-      margin-top: 20px;  
-      position: relative;  
-      z-index: 2;  
-    }  
+        /* Redes sociales */
+        .socials {
+            margin-top: 20px;
+            position: relative;
+            z-index: 2;
+        }
 
-    .socials a {  
-      display: inline-block;  
-      margin: 10px;  
-      padding: 12px 25px;  
-      border-radius: 12px;  
-      color: white;  
-      text-decoration: none;  
-      font-size: 1.2rem;  
-      font-weight: bold;  
-      font-family: "Courier New", monospace;  
-      transition: all 0.3s ease-in-out;  
-      box-shadow: 0 0 8px rgba(255,255,255,0.3);  
-    }  
+        .socials a {
+            display: inline-block;
+            margin: 10px;
+            padding: 12px 25px;
+            border-radius: 12px;
+            color: white;
+            text-decoration: none;
+            font-size: 1.2rem;
+            font-weight: bold;
+            font-family: "Courier New", monospace;
+            transition: all 0.3s ease-in-out;
+            box-shadow: 0 0 8px rgba(255,255,255,0.3);
+        }
 
-    .socials a i { margin-right: 8px; font-size: 1.3rem; }  
-    .socials a:hover {  
-      transform: scale(1.08);  
-      box-shadow: 0 0 15px rgba(255,255,255,0.7), 0 0 25px currentColor;  
-    }  
-    .socials a.spotify { background: #1DB954; }  
-    .socials a.roblox { background: #FF4757; }  
-    .socials a.discord { background: #5865F2; }  
+        .socials a i { margin-right: 8px; font-size: 1.3rem; }
+        .socials a:hover {
+            transform: scale(1.08);
+            box-shadow: 0 0 15px rgba(255,255,255,0.7), 0 0 25px currentColor;
+        }
+        .socials a.spotify { background: #1DB954; }
+        .socials a.steam { background: #171A21; }
+        .socials a.roblox { background: #FF4757; }
+        .socials a.discord { background: #5865F2; }
 
-    /* Botón música - Estados dinámicos + animación */  
-    .music-btn {  
-      margin: 30px auto; /* Centrado horizontalmente */  
-      padding: 10px 20px;  
-      border: 2px solid white;  
-      border-radius: 10px;  
-      background: transparent;  
-      color: white;  
-      font-size: 1.1rem;  
-      cursor: pointer;  
-      transition: all 0.3s ease;  
-      position: relative;  
-      z-index: 2;  
-      display: flex;  
-      align-items: center;  
-      justify-content: center;  
-    }  
-    .music-btn i { margin-right: 8px; }  
-    .music-btn:hover { transform: scale(1.05); }  
-    .music-btn:active { transform: scale(0.98); }  
+        /* Botón música - Estados dinámicos + animación */
+        .music-btn {
+            margin: 30px auto; /* Centrado horizontalmente */
+            padding: 10px 20px;
+            border: 2px solid white;
+            border-radius: 10px;
+            background: transparent;
+            color: white;
+            font-size: 1.1rem;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            position: relative;
+            z-index: 2;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        .music-btn i { margin-right: 8px; }
+        .music-btn:hover { transform: scale(1.05); }
+        .music-btn:active { transform: scale(0.98); }
 
-    /* Estado apagado (paused) */  
-    .music-btn.paused {  
-      background: transparent;  
-      border-color: white;  
-      color: white;  
-      box-shadow: 0 0 5px rgba(255, 255, 255, 0.5);  
-    }  
-    .music-btn.paused:hover {  
-      background: rgba(255, 255, 255, 0.1);  
-      border-color: #ccc;  
-    }  
+        /* Estado apagado (paused) */
+        .music-btn.paused {
+            background: transparent;
+            border-color: white;
+            color: white;
+            box-shadow: 0 0 5px rgba(255, 255, 255, 0.5);
+        }
+        .music-btn.paused:hover {
+            background: rgba(255, 255, 255, 0.1);
+            border-color: #ccc;
+        }
 
-    /* Estado encendido (playing) */  
-    .music-btn.playing {  
-      background: red;  
-      border-color: red;  
-      color: white;  
-      box-shadow: 0 0 10px red, 0 0 20px rgba(255, 0, 0, 0.8);  
-      animation: pulse 1.5s infinite alternate;  
-    }  
-    .music-btn.playing:hover {  
-      background: darkred;  
-      border-color: darkred;  
-      box-shadow: 0 0 15px red, 0 0 30px rgba(255, 0, 0, 1);  
-    }  
+        /* Estado encendido (playing) */
+        .music-btn.playing {
+            background: red;
+            border-color: red;
+            color: white;
+            box-shadow: 0 0 10px red, 0 0 20px rgba(255, 0, 0, 0.8);
+            animation: pulse 1.5s infinite alternate;
+        }
+        .music-btn.playing:hover {
+            background: darkred;
+            border-color: darkred;
+            box-shadow: 0 0 15px red, 0 0 30px rgba(255, 0, 0, 1);
+        }
 
-    @keyframes pulse {  
-      from {  
-        box-shadow: 0 0 10px red, 0 0 20px rgba(255, 0, 0, 0.8);  
-        transform: scale(1);  
-      }  
-      to {  
-        box-shadow: 0 0 20px red, 0 0 40px rgba(255, 0, 0, 1);  
-        transform: scale(1.02);  
-      }  
-    }  
+        @keyframes pulse {
+            from {
+                box-shadow: 0 0 10px red, 0 0 20px rgba(255, 0, 0, 0.8);
+                transform: scale(1);
+            }
+            to {
+                box-shadow: 0 0 20px red, 0 0 40px rgba(255, 0, 0, 1);
+                transform: scale(1.02);
+            }
+        }
 
-    /* Layout */  
-    .layout {  
-      display: grid;  
-      grid-template-columns: 1fr 2fr 1fr;  
-      gap: 20px;  
-      margin-top: 40px;  
-    }  
+        /* Layout */
+        .layout {
+            display: grid;
+            grid-template-columns: 1fr 2fr 1fr;
+            gap: 20px;
+            margin-top: 40px;
+        }
 
-    /* Staff */  
-    .staff-col {  
-      display: flex;  
-      flex-direction: column;  
-      gap: 20px;  
-      align-items: center;  
-    }  
-    .card {  
-      background: #111;  
-      padding: 15px;  
-      border-radius: 12px;  
-      width: 150px;  
-      text-align: center;  
-      box-shadow: 0 0 10px red, 0 0 20px rgba(255,0,0,0.6);  
-      animation: glow 2s infinite alternate;  
-    }  
-    @keyframes glow {  
-      from { box-shadow: 0 0 10px red; }  
-      to { box-shadow: 0 0 25px red, 0 0 50px rgba(255,0,0,0.9);}  
-    }  
-    .card img {  
-      border-radius: 50%;  
-      width: 80px;  
-      height: 80px;  
-      margin-bottom: 8px;  
-      border: 2px solid red;  
-    }  
-    .card .role { font-size: 13px; color: #bbb; }  
+        /* Staff */
+        .staff-col {
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+            align-items: center;
+        }
+        .card {
+            background: #111;
+            padding: 15px;
+            border-radius: 12px;
+            width: 150px;
+            text-align: center;
+            box-shadow: 0 0 10px red, 0 0 20px rgba(255,0,0,0.6);
+            animation: glow 2s infinite alternate;
+        }
+        @keyframes glow {
+            from { box-shadow: 0 0 10px red; }
+            to { box-shadow: 0 0 25px red, 0 0 50px rgba(255,0,0,0.9);}
+        }
+        .card img {
+            border-radius: 50%;
+            width: 80px;
+            height: 80px;
+            margin-bottom: 8px;
+            border: 2px solid red;
+        }
+        .card .role { font-size: 13px; color: #bbb; }
 
-    /* Aportes */  
-    .aporte {  
-      background: rgba(0, 0, 0, 0.7);  
-      padding: 30px;  
-      border-radius: 15px;  
-      margin-bottom: 40px;  
-      border: 2px solid red;  
-      box-shadow: 0 0 10px red, 0 0 20px red, 0 0 40px red, 0 0 60px rgba(255, 0, 0, 0.8);  
-      transition: 0.3s;  
-      position: relative;  
-      z-index: 2;  
-      line-height: 1.8;  
-      letter-spacing: 0.5px;  
-      text-align: left;  
-    }  
-    .aporte:hover {  
-      box-shadow: 0 0 20px red, 0 0 40px red, 0 0 80px red, 0 0 100px rgba(255, 0, 0, 1);  
-    }  
-    .aporte h2 {  
-      font-size: 2rem;  
-      color: red;  
-      margin-bottom: 15px;  
-      text-align: center;  
-    }  
+        /* Aportes */
+        .aporte {
+            background: rgba(0, 0, 0, 0.7);
+            padding: 30px;
+            border-radius: 15px;
+            margin-bottom: 40px;
+            border: 2px solid red;
+            box-shadow: 0 0 10px red, 0 0 20px red, 0 0 40px red, 0 0 60px rgba(255, 0, 0, 0.8);
+            transition: 0.3s;
+            position: relative;
+            z-index: 2;
+            line-height: 1.8;
+            letter-spacing: 0.5px;
+            text-align: left;
+        }
+        .aporte:hover {
+            box-shadow: 0 0 20px red, 0 0 40px red, 0 0 80px red, 0 0 100px rgba(255, 0, 0, 1);
+        }
+        .aporte h2 {
+            font-size: 2rem;
+            color: red;
+            margin-bottom: 15px;
+            text-align: center;
+        }
 
-    /* Video YouTube responsivo */  
-    .video-wrapper {  
-      position: relative;  
-      padding-bottom: 56.25%;  
-      height: 0;  
-      overflow: hidden;  
-      border-radius: 10px;  
-      margin-top: 20px;  
-    }  
-    .video-wrapper iframe {  
-      position: absolute;  
-      top: 0; left: 0;  
-      width: 100%; height: 100%;  
-    }  
+        /* Video YouTube responsivo */
+        .video-wrapper {
+            position: relative;
+            padding-bottom: 56.25%;
+            height: 0;
+            overflow: hidden;
+            border-radius: 10px;
+            margin-top: 20px;
+        }
+        .video-wrapper iframe {
+            position: absolute;
+            top: 0; left: 0;
+            width: 100%; height: 100%;
+        }
 
-    .download-btn {  
-      display: inline-block;  
-      margin-top: 20px;  
-      padding: 12px 25px;  
-      background: red;  
-      color: white;  
-      font-weight: bold;  
-      border-radius: 12px;  
-      text-decoration: none;  
-      font-size: 1.2rem;  
-      transition: 0.3s;  
-      box-shadow: 0 0 10px red, 0 0 20px red, 0 0 30px rgba(255, 0, 0, 0.8);  
-    }  
-    .download-btn:hover {  
-      background: darkred;  
-      box-shadow: 0 0 20px red, 0 0 40px red, 0 0 60px red;  
-    }  
+        .download-btn {
+            display: inline-block;
+            margin-top: 20px;
+            padding: 12px 25px;
+            background: red;
+            color: white;
+            font-weight: bold;
+            border-radius: 12px;
+            text-decoration: none;
+            font-size: 1.2rem;
+            transition: 0.3s;
+            box-shadow: 0 0 10px red, 0 0 20px red, 0 0 30px rgba(255, 0, 0, 0.8);
+        }
+        .download-btn:hover {
+            background: darkred;
+            box-shadow: 0 0 20px red, 0 0 40px red, 0 0 60px red;
+        }
 
-    /* Responsive */  
-    @media (max-width: 768px) {  
-      .layout { display: block; }  
-      .staff-col {  
-        flex-direction: row;  
-        overflow-x: auto;  
-        gap: 15px;  
-        padding: 10px;  
-        scroll-snap-type: x mandatory;  
-      }  
-      .card {  
-        flex: 0 0 auto;  
-        width: 130px;  
-        scroll-snap-align: start;  
-      }  
-    }  
+        /* Responsive */
+        @media (max-width: 768px) {
+            .layout { display: block; }
+            .staff-col {
+                flex-direction: row;
+                overflow-x: auto;
+                gap: 15px;
+                padding: 10px;
+                scroll-snap-type: x mandatory;
+            }
+            .card {
+                flex: 0 0 auto;
+                width: 130px;
+                scroll-snap-align: start;
+            }
+        }
 
-  
-    /* Contenido principal */  
-    #mainContent {  
-      display: none;  
-    }  
-  </style>  
-</head>  
-<body>  
-  <div class="background-container"></div>  
+        /* Botón Sharingan - FIX para Android (Mantener si quieres el botón en la esquina) */
+        .sharingan-btn {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            width: 50px;
+            height: 50px;
+            cursor: pointer;
+            z-index: 1000;
+            outline: none;
+            border: none;
+            user-select: none;
+            -webkit-tap-highlight-color: transparent;
+            touch-action: manipulation;
+            -webkit-user-select: none;
+            -webkit-touch-callout: none;
+        }
+        .sharingan-btn img {
+            width: 100%;
+            height: 100%;
+            border-radius: 50%;
+            animation: spin 4s linear infinite, glowRed 1.5s infinite alternate;
+        }
+        .sharingan-btn:focus,
+        .sharingan-btn:active {
+            outline: none !important;
+            box-shadow: none !important;
+            background-color: transparent !important;
+        }
+        @media (hover: none) and (pointer: coarse) {
+            .sharingan-btn {
+                -webkit-tap-highlight-color: transparent !important;
+                touch-action: manipulation !important;
+            }
+            .sharingan-btn:active img {
+                animation-play-state: paused;
+            }
+            .sharingan-btn::before {
+                content: '';
+                position: absolute;
+                top: 0; left: 0;
+                width: 100%; height: 100%;
+                background-color: transparent;
+                border-radius: 50%;
+            }
+        }
+        @keyframes spin {
+            from { transform: rotate(0deg); }
+            to { transform: rotate(360deg); }
+        }
+        @keyframes glowRed {
+            from { box-shadow: 0 0 5px red; }
+            to { box-shadow: 0 0 20px red, 0 0 40px red; }
+        }
 
-  <!-- Contenido principal -->  
-  <div id="mainContent">  
-    <h1>YISUS MODS</h1>  
-    <p>"TODO CON PACIENCIA SE LOGRA"</p>  
+        /* Overlay fullscreen Sharingan (Mantener para la función del botón) */
+        #sharingan-overlay {
+            position: fixed;
+            top: 0; left: 0;
+            width: 100%; height: 100%;
+            background: black;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            z-index: 2000;
+            opacity: 0;
+            visibility: hidden;
+            transition: opacity 0.6s;
+        }
+        #sharingan-overlay img {
+            max-width: 80%;
+            max-height: 80%;
+            width: auto;
+            height: auto;
+            object-fit: contain;
+            background-color: black;
+            border-radius: 50%;
+        }
+        #sharingan-overlay.active {
+            opacity: 1;
+            visibility: visible;
+        }
 
-    <!-- Redes -->  
-    <div class="socials">  
-      <a href="https://www.roblox.com/es/users/9207271059/profile" target="_blank" class="roblox"><i class="fa-solid fa-cube"></i> Roblox</a>  
-      <a href="https://discord.gg/QZUzDRyw" target="_blank" class="discord" style="margin-top:15px; display:inline-block;"><i class="fa-brands fa-discord"></i> DC - YISUS MODS</a>  
-    </div>  
+        /* GIF de entrada - ELIMINADO del CSS ya que se quita el div */
+        /* Contenido principal - ELIMINADO 'display: none;' */
+        #mainContent {
+             /* Ya no es necesario 'display: none;' */
+        }
+    </style>
+</head>
+<body>
+    <div class="background-container"></div>
 
-    <!-- Música -->  
-    <audio id="bg-music" loop>  
-      <source src="https://files.catbox.moe/c5clgr.mp3" type="audio/mpeg">  
-    </audio>  
-    <button class="music-btn paused" id="musicToggle" onclick="toggleMusic()"><i class="fa-solid fa-play"></i> encender música</button>  
+    <div id="mainContent">
+        <h1>INJERTOS</h1>
+        <p>"-POCO A POCO CRECIENDO-"</p>
 
-    <!-- Layout con Staff y Aportes -->  
-    <div class="layout">  
-      <!-- Staff izquierda -->  
-      <div class="staff-col">  
-               <div class="card"><img src="https://cdn.discordapp.com/avatars/1216152197277159535/19640d242d488a806db663676cd90f4b.png"><p><b>Dayron W.</b></p><p class="role">OWNER</p></div>   
-      </div>  
-
-      <!-- APORTES -->  
-      <div id="aportes">  
-        <div class="aporte">  
-          <h2>TIFFANY</h2>  
-          <p><b>DESCRIPCION:</b> aporte para los demeros jodidos hecho por Hilnzo (@klenoz).</p>  
-          <p>Si descargas este aporte por otro lugar que no sea mi discord de aportes o sampmods, es que no es mío y fue modificado.</p>  
-          <p><b>INCLUYE:</b> macros, barra de estamina, gamefixer, hit maker, sonido de campana, efectos, armas y más.</p>  
-          <p><b>CONTRASEÑA:</b> <span style="color: red; font-weight: bold;">tiffanyctmr</span></p>  
-          <div class="video-wrapper">  
-            <iframe src="https://youtube.com/embed/1Iq2YeDLVmM?enablejsapi=1" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen id="youtube-video-1"></iframe>  
-          </div>  
-          <a href="https://www.mediafire.com/file/wsiz41zichaeqxo/Tiffany.rar/file" target="_blank" class="download-btn">⬇ DESCARGAR APORTE</a>  
-        </div>  
-
-      
+        <div class="socials">
+            <a href="https://open.spotify.com/user/31mtjz2i5m63xek4cp4pevznd74i" target="_blank" class="spotify"><i class="fa-brands fa-spotify"></i> Spotify</a>
+            <a href="https://steamcommunity.com/profiles/76561199805784382/" target="_blank" class="steam"><i class="fa-brands fa-steam"></i> Steam</a>
+            <a href="https://www.roblox.com/es/users/9207271059/profile" target="_blank" class="roblox"><i class="fa-solid fa-cube"></i> Roblox</a>
+            <a href="https://discordapp.com/users/1298301131641983019" target="_blank" class="discord"><i class="fa-brands fa-discord"></i> Discord</a>
+            <a href="https://discord.gg/rNJ7UaPBYa" target="_blank" class="discord" style="margin-top:15px; display:inline-block;"><i class="fa-brands fa-discord"></i> DC - INJERTOS MODS</a>
         </div>
-      <!-- Staff derecha -->  
-      <div class="staff-col">
 
-      </div>
-      </div>
-    </div>  
-  </div>  
+        <audio id="bg-music" loop>
+            <source src="https://files.catbox.moe/vf3nc4.mp3" type="audio/mpeg">
+        </audio>
+        <button class="music-btn paused" id="musicToggle" onclick="toggleMusic()"><i class="fa-solid fa-play"></i> encender música</button>
 
+        <div class="layout">
+            <div class="staff-col">
+                <div class="card"><img src="https://cdn.discordapp.com/guilds/1387892493860999319/users/1298301131641983019/avatars/a_1e3d8f261e5560ab8bec9d9277b77f0d.gif"><p><b>HILNZO</b></p><p class="role">DUEÑO</p></div>
+                <div class="card"><img src="https://cdn.discordapp.com/guilds/1387892493860999319/users/1354865570880946176/avatars/5986239fed096a6beb8d2998bd1ac729.png"><p><b>KALCOR</b></p><p class="role">DUEÑO</p></div>
+                <div class="card"><img src="https://cdn.discordapp.com/avatars/1246355878840631327/2c0846a264c2af5eede51ab3aa0fc3cb.png"><p><b>KAIROX</b></p><p class="role">DUEÑO</p></div>
+                <div class="card"><img src="https://cdn.discordapp.com/avatars/1221849688593137830/ccbeb578b68bd02a4b19dc1ddd506842.png"><p><b>JACOB</b></p><p class="role">DUEÑO</p></div>
+                <div class="card"><img src="https://cdn.discordapp.com/avatars/1260353622001188875/66c48f30b95b7b331c48196b31fb7282.png"><p><b>Maik</b></p><p class="role">DUEÑO</p></div>
+                <div class="card"><img src="https://cdn.discordapp.com/guilds/1387892493860999319/users/1298942723847622690/avatars/3a3d7b727f6d8b018dcc639c260e49f8.png"><p><b>MANZER</b></p><p class="role">DUEÑO</p></div>
+            </div>
 
+            <div id="aportes">
+                <div class="aporte">
+                    <h2>TIFFANY</h2>
+                    <p><b>DESCRIPCION:</b> aporte para los demeros jodidos hecho por Hilnzo (@klenoz).</p>
+                    <p>Si descargas este aporte por otro lugar que no sea mi discord de aportes o sampmods, es que no es mío y fue modificado.</p>
+                    <p><b>INCLUYE:</b> macros, barra de estamina, gamefixer, hit maker, sonido de campana, efectos, armas y más.</p>
+                    <p><b>CONTRASEÑA:</b> <span style="color: red; font-weight: bold;">tiffanyctmr</span></p>
+                    <div class="video-wrapper">
+                        <iframe src="https://youtube.com/embed/1Iq2YeDLVmM?enablejsapi=1" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen id="youtube-video-1"></iframe>
+                    </div>
+                    <a href="https://www.mediafire.com/file/wsiz41zichaeqxo/Tiffany.rar/file" target="_blank" class="download-btn">⬇ DESCARGAR APORTE</a>
+                </div>
 
+                <div class="aporte">
+                    <h2>VERSION R5 INJERTOS MODS</h2>
+                    <p><b>DESCRIPCION:</b> unos de los aportes que menos me gusto crear por ser R5 ya que no es compatible con nada.</p>
+                    <p>Si descargas este aporte por otro lugar que no sea mi discord de aportes o sampmods, es que no es mío y fue modificado.</p>
+                    <p><b>INCLUYE:</b> El aporte esta limpio el R5 no permite muchos cleos o .asi).</p>
+                    <p><b>CONTRASEÑA:</b> <span style="color: red; font-weight: bold;">injertosr5</span></p>
+                    <div class="video-wrapper">
+                        <iframe src="https://youtube.com/embed/BywZG9Ckh9Q?enablejsapi=1" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen id="youtube-video-2"></iframe>
+                    </div>
+                    <a href="https://www.mediafire.com/file/wsgq5q0r3su9hzo/version_R5_injertos_mods.rar/file" target="_blank" class="download-btn">⬇ DESCARGAR APORTE</a>
+                </div>
 
-  <script>  
-    // Inicializar la música de fondo  
-    const bgMusic = document.getElementById("bg-music");  
-    const musicBtn = document.getElementById("musicToggle");  
-    let isMusicPlaying = false;  
+                <div class="aporte">
+                    <h2>DataBlue🔵MR$</h2>
+                    <p><b>DESCRIPCION:</b> Para que se les vea igual usar los cleos. (Estan dentro de la carpeta de la data).</p>
+                    <p>CREADOR: (@manzer)</p>
+                    <p><b>INCLUYE:</b> lista rápida de lo que trae: skins, cleos, sonidos, armas, etc).</p>
+                    <p><b>CONTRASEÑA:</b> <span style="color: red; font-weight: bold;">NO TIENE CONTRASEÑA</span></p>
+                    <div class="video-wrapper">
+                        <iframe src="https://youtube.com/embed/Tv7fyMCG0G0?enablejsapi=1" frameborder="0" allowfullscreen id="youtube-video-3"></iframe>
+                    </div>
+                    <a href="https://www.mediafire.com/file/12efvtjw3392v58/DataBlue%F0%9F%94%B5MR%24.zip/file" target="_blank" class="download-btn">⬇ DESCARGAR APORTE</a>
+                </div>
 
-    // Eventos del audio para sincronizar estado visual  
-    bgMusic.onplay = function() {  
-      isMusicPlaying = true;  
-      musicBtn.classList.remove("paused");  
-      musicBtn.classList.add("playing");  
-      musicBtn.innerHTML = '<i class="fa-solid fa-pause"></i> apagar música';  
-    };  
+                <div class="aporte">
+                    <h2>BRUTALITY</h2>
+                    <p><b>DESCRIPCION:</b> VERSION R4 - INJERTOS MODS - BRUTALITY MATAR SIN PENSARLO.</p>
+                    <p><b>Aviso:</b> aporte limpio y verificado, puedes encontrar mas en nuestro discord.</p>
+                    <p>AVISO: JACOB</p>
+                    <p><b>INCLUYE:</b> armas,vehiculos,/sensa y /macros.</p>
+                    <p><b>CONTRASEÑA:</b> <span style="color: red; font-weight: bold;">NO TIENE CONTRASEÑA</span></p>
+                    <div class="video-wrapper">
+                        <iframe src="https://youtube.com/embed/fmVS7-nTmD4?enablejsapi=1" frameborder="0" allowfullscreen id="youtube-video-6"></iframe>
+                    </div>
+                    <a href="https://www.mediafire.com/file/rj4hc064ibyu767/BRUTALITY.rar/file" target="_blank" class="download-btn">⬇ DESCARGAR APORTE</a>
+                </div>
 
-    bgMusic.onpause = function() {  
-      isMusicPlaying = false;  
-      musicBtn.classList.remove("playing");  
-      musicBtn.classList.add("paused");  
-      musicBtn.innerHTML = '<i class="fa-solid fa-play"></i> encender música';  
-    };  
+                <div class="aporte">
+                    <h2>DRUKS</h2>
+                    <p><b>DESCRIPCION:</b> PARA SABER QUE COSAS TRAE EL APORTE REVISA LA CARPETA INJERTOS SI SIENTES QUE TE VA MAL PUEDE APAGAR LOS EFECTOS CON EL GAMEFIXER USA - F4.</p>
+                    <p><b>AVISO:</b> ESTE APORTE ES EXCLUSIVAMENTE DE INJERTOS MODS, SI LO VES EN OTRO LADO PROBABLEMENTE NO ES DE NOSOTROS O ESTA MODIFICADO.</p>
+                    <p><b>CREADOR:</b> HILNZO</p>
+                    <p><b>INCLUYE:</b> /MACROS - /HINFO - /PCMDS - /SDPOS - /HD - /SENSA.</p>
+                    <p><b>CONTRASEÑA:</b> <span style="color: red; font-weight: bold;">hilnzodruks</span></p>
+                    <div class="video-wrapper">
+                        <iframe src="https://www.youtube.com/embed/FPXuZPFyCd8?si" frameborder="0" allowfullscreen id="youtube-video-7"></iframe>
+                    </div>
+                    <a href="https://www.mediafire.com/file/6d06kpjwz836nu8/DRUKS.rar/file" target="_blank" class="download-btn">⬇ DESCARGAR APORTE</a>
+                </div>
+                <div class="aporte">
+                    <h2>APORTE GIRLZ</h2>
+                    <p><b>DESCRIPCION:</b> ! MATAR SIN PENSAR ! </p>
+                    <p><b>AVISO:</b> ESTE APORTE ES EXCLUSIVAMENTE DE INJERTOS MODS, SI LO VES EN OTRO LADO PROBABLEMENTE NO ES DE NOSOTROS O ESTA MODIFICADO.</p>
+                    <p><b>CREADOR:</b> Jacod </p>
+                    <p><b>INCLUYE:</b> /macros -  /sensa - /gemnu - /any (sirve para quitar las katanas) </p>
+                    <p><b>CONTRASEÑA:</b> <span style="color: blue; font-weight: bold;"> NO TIENE CONTRASEÑA</span></p>
+                    <div class="video-wrapper">
+                        <iframe width="1280" height="720" src="https://youtube.com/embed/VsXBeqeQHbQ?si" frameborder="0" allowfullscreen></iframe>
+                    </div>
+                    <a href="https://www.mediafire.com/file/l6dun8dkpstz1ks/GIRLZ.rar/file" target="_blank" class="download-btn">⬇ DESCARGAR APORTE</a>
+                </div>
+                <div class="aporte">
+                    <h2>Gta Jackson</h2>
+                    <p><b>DESCRIPCION:</b> ! sin novedad ! </p>
+                    <p><b>AVISO:</b> ESTE APORTE ES EXCLUSIVAMENTE DE INJERTOS MODS, SI LO VES EN OTRO LADO PROBABLEMENTE NO ES DE NOSOTROS O ESTA MODIFICADO.</p>
+                    <p><b>CREADOR:</b> Michael Jackson </p>
+                    <p><b>INCLUYE:</b> Gmenu, Cacmods.asi, Skybox, Cargos visibles, chat filtrado, sensa actualizado (Todas las armas), timecyc, calles, mapa, radardics, entre muchas cosas mas </p>
+                    <p><b>CONTRASEÑA:</b> <span style="color: blue; font-weight: bold;"> NO TIENE CONTRASEÑA</span></p>
+                    <div class="video-wrapper">
+                        <iframe width="1280" height="720" src="https://youtube.com/embed/TbqKW1A9oAo" frameborder="0" allowfullscreen></iframe>
+                    </div>
+                    <a href="https://www.mediafire.com/file/oyjhveofniiiubx/GTA+jackson.rar/file" class="download-btn">⬇ DESCARGAR APORTE</a>
+                </div>
+            </div>
+            <div class="staff-col">
+                <div class="card"><img src="https://cdn.discordapp.com/avatars/1216152197277159535/19640d242d488a806db663676cd90f4b.png"><p><b>Dayron W.</b></p><p class="role">ADMINISTRADOR</p></div>
+                <div class="card"><img src="https://cdn.discordapp.com/avatars/1386421165052002366/a_e752489e8b37d4af5efefbb1bb796f40.gif"><p><b>David</b></p><p class="role">JUNIOR ADMIN</p></div>
+                <div class="card"><img src="https://cdn.discordapp.com/avatars/1000966605729181847/9de61981cbe4d9ba985aace65cec1ef.png"><p><b>R.R</b></p><p class="role">HEAD MODERADOR</p></div>
+                <div class="card"><img src="https://cdn.discordapp.com/avatars/1378867547394408470/16c25c75f2c2b78f72b57ba2be733215.png"><p><b>Daniel</b></p><p class="role">JUNIOR ADMIN</p></div>
+                <div class="card"><img src="https://cdn.discordapp.com/avatars/1269114900932984862/731c55d188d328718ea1f9bb0f965106.png"><p><b>jackson</b></p><p class="role">JUNIOR ADMIN</p></div>
+                <div class="card"><img src="https://cdn.discordapp.com/avatars/1337927773884252282/6964a68bf223249a5602a6a65413e4c0.png"><p><b>jack</b></p><p class="role">STAR HELPER</p></div>
+                <div class="card"><img src="https://cdn.discordapp.com/avatars/1297359221280739389/d3ce5d850b8408e49bd0fecc0f679a7e.png"><p><b>yerlin</b></p><p class="role">STAR HELPER</p></div>
+            </div>
+        </div>
+    </div>
 
-    function toggleMusic() {  
-      if (bgMusic.paused) {  
-        bgMusic.play().catch(e => console.log("Error al reproducir: ", e));  
-      } else {  
-        bgMusic.pause();  
-      }  
-    }  
+    <div class="sharingan-btn" onclick="activarSharingan()">
+        <img src="https://media0.giphy.com/media/v1.Y2lkPTc5MGI3NjExc2VjcXMzdmR5bTc4b3RpN3FmeGlrd3M3ZzltNjY4bmY0c2F2MmtnYyZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/AD9YKaY2vxTXO/giphy.gif" alt="Sharingan">
+    </div>
 
-    function enterSite() {  
-      document.getElementById("intro-overlay").style.display = "none";  
-      document.getElementById("mainContent").style.display = "block";  
-      bgMusic.play();  
-    }  
-    
-      overlay.classList.add("active");  
-      sound.play();  
+    <div id="sharingan-overlay" onclick="cerrarSharingan()">
+        <img src="https://i.pinimg.com/originals/44/9c/17/449c175588d56442fd162990ac428759.gif" alt="Sharingan Efecto">
+    </div>
 
-    
+    <audio id="sharingan-sound">
+        <source src="https://files.catbox.moe/4dxgfn.mp3" type="audio/mpeg">
+    </audio>
 
-    // Cargar la API de YouTube de forma asíncrona  
-    function loadYouTubeAPI() {  
-      if (!window.YT) {  
-        var tag = document.createElement('script');  
-        tag.src = "https://www.youtube.com/iframe_api";  
-        var firstScriptTag = document.getElementsByTagName('script')[0];  
-        firstScriptTag.parentNode.insertBefore(tag, firstScriptTag);  
-        window.onYouTubeIframeAPIReady = onYouTubeIframeAPIReady;  
-      } else {  
-        onYouTubeIframeAPIReady();  
-      }  
-    }  
+    <script>
+        // Inicializar la música de fondo
+        const bgMusic = document.getElementById("bg-music");
+        const musicBtn = document.getElementById("musicToggle");
+        let isMusicPlaying = false;
 
-    document.addEventListener('DOMContentLoaded', loadYouTubeAPI);  
+        // Eventos del audio para sincronizar estado visual
+        bgMusic.onplay = function() {
+            isMusicPlaying = true;
+            musicBtn.classList.remove("paused");
+            musicBtn.classList.add("playing");
+            musicBtn.innerHTML = '<i class="fa-solid fa-pause"></i> apagar música';
+        };
 
-    window.addEventListener("load", () => {  
-      if (sessionStorage.getItem("sharinganActivo")) {  
-        cerrarSharingan();  
-        sessionStorage.removeItem("sharinganActivo");  
-      }  
-    });  
-  </script>  
-</body>  
+        bgMusic.onpause = function() {
+            isMusicPlaying = false;
+            musicBtn.classList.remove("playing");
+            musicBtn.classList.add("paused");
+            musicBtn.innerHTML = '<i class="fa-solid fa-play"></i> encender música';
+        };
+
+        function toggleMusic() {
+            if (bgMusic.paused) {
+                // Intenta reproducir la música al cargar
+                bgMusic.play().catch(e => console.log("Error al reproducir: ", e));
+            } else {
+                bgMusic.pause();
+            }
+        }
+
+        // ELIMINADA: La función enterSite() ya no es necesaria.
+
+        function activarSharingan() {
+            const overlay = document.getElementById("sharingan-overlay");
+            const sound = document.getElementById("sharingan-sound");
+
+            overlay.classList.add("active");
+            sound.play();
+
+            setTimeout(() => {
+                sessionStorage.setItem("sharinganActivo", "true");
+                window.location.href = "aportes-exclusivos.html";
+            }, 3000);
+        }
+
+        function cerrarSharingan() {
+            const overlay = document.getElementById("sharingan-overlay");
+            overlay.classList.remove("active");
+        }
+
+        // Función para manejar la API de YouTube
+        function onYouTubeIframeAPIReady() {
+            const videoIds = ['youtube-video-1', 'youtube-video-2', 'youtube-video-3', 'youtube-video-4', 'youtube-video-5', 'youtube-video-6', 'youtube-video-7'];
+
+            videoIds.forEach((id) => {
+                if (document.getElementById(id)) {
+                    new YT.Player(id, {
+                        events: {
+                            'onStateChange': (event) => {
+                                if (event.data === YT.PlayerState.PLAYING && isMusicPlaying) {
+                                    bgMusic.pause();
+                                    isMusicPlaying = false;
+                                } else if ((event.data === YT.PlayerState.ENDED || event.data === YT.PlayerState.PAUSED) && !isMusicPlaying) {
+                                    // La música de fondo solo se reanuda si NO estaba tocando antes (aunque ahora siempre estará en pausa al inicio)
+                                    // Comentar o eliminar esta lógica si no quieres que la música de fondo se reproduzca automáticamente.
+                                    // Si quieres que se reproduzca automáticamente al cargar la página:
+                                    // bgMusic.play(); 
+                                    // isMusicPlaying = true;
+                                }
+                            }
+                        }
+                    });
+                }
+            });
+        }
+
+        // Cargar la API de YouTube de forma asíncrona
+        function loadYouTubeAPI() {
+            if (!window.YT) {
+                var tag = document.createElement('script');
+                tag.src = "https://www.youtube.com/iframe_api";
+                var firstScriptTag = document.getElementsByTagName('script')[0];
+                firstScriptTag.parentNode.insertBefore(tag, firstScriptTag);
+                window.onYouTubeIframeAPIReady = onYouTubeIframeAPIReady;
+            } else {
+                onYouTubeIframeAPIReady();
+            }
+        }
+
+        // **AÑADIDO: Reproducción automática de música de fondo (Si lo deseas)**
+        window.addEventListener("load", () => {
+            loadYouTubeAPI();
+            // Intento de reproducción automática de la música.
+            // Nota: Muchos navegadores modernos bloquean la reproducción automática (autoplay)
+            // si no ha habido interacción previa del usuario.
+            bgMusic.play().catch(e => {
+                console.log("No se pudo iniciar la música automáticamente. Requiere interacción del usuario.", e);
+            });
+
+            // Lógica del sharingan (se mantiene aunque ya no afecta la entrada principal)
+            if (sessionStorage.getItem("sharinganActivo")) {
+                cerrarSharingan();
+                sessionStorage.removeItem("sharinganActivo");
+            }
+        });
+    </script>
+</body>
 </html>
