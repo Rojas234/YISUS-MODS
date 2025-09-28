@@ -10,7 +10,7 @@
         :root {
             --blue-color: #5865F2; /* Azul de Discord */
             --blue-shadow: rgba(88, 101, 242, 0.8);
-            --dark-blue-text: #3a45a6; /* Un tono de azul oscuro (mantido, pero no usado en 'p') */
+            --dark-blue-text: #3a45a6; /* Un tono de azul oscuro */
         }
 
         body {
@@ -43,12 +43,12 @@
             z-index: 2;
         }
 
-        /* Párrafos - Afecta al lema principal. Vuelve a ser BLANCO. */
+        /* Párrafos - Afecta solo al lema principal. */
         p {
             font-size: 1.3rem;
             margin-bottom: 30px;
             font-weight: bold;
-            color: white; /* Color blanco para el lema */
+            color: white; /* Color blanco para el lema principal */
             position: relative;
             z-index: 2;
         }
@@ -148,41 +148,39 @@
             line-height: 1.8;
             letter-spacing: 0.5px;
             text-align: left;
-            /* Color base para las etiquetas: GRIS CLARO */
-            color: #ccc; 
-        }
-        
-        /* El texto de la definición dentro del párrafo es BLANCO */
-        .aporte p {
+            /* Color base para la DEFINICIÓN/VALOR: BLANCO */
             color: white; 
-            font-weight: normal; 
-            margin-bottom: 10px; /* Reducimos el margen del párrafo para el listado */
         }
-        
-        /* La etiqueta en negrita (DESCRIPCION:, CREADOR:, etc.) toma el color gris claro del .aporte */
+
+        /* La etiqueta en negrita (DESCRIPCION:, CREADOR:, etc.) es GRIS CLARO */
         .aporte p b {
-            color: inherit; 
+            color: #ccc; 
             font-weight: bold;
         }
-        
-        /* El título <h2> dentro del aporte también toma el color GRIS CLARO */
+
+        /* El título <h2> dentro del aporte es GRIS CLARO, igual que las etiquetas */
         .aporte h2 {
             font-size: 2rem;
             color: #ccc; 
             margin-bottom: 15px;
             text-align: center;
         }
-
-        /* Sobrescribir el estilo para el texto de la contraseña (el span) */
+        
+        /* ESTILO ESPECIAL PARA CONTRASEÑA: Hace que toda la línea sea AZUL y NEGRITA */
         .blue-text {
             color: var(--blue-color) !important;
+            font-weight: bold !important;
+        }
+        /* Aseguramos que el <b> dentro de la contraseña también sea azul */
+        .blue-text b {
+            color: var(--blue-color) !important;
+            font-weight: bold !important;
         }
 
 
         .aporte:hover {
             box-shadow: 0 0 20px var(--blue-color), 0 0 40px var(--blue-color), 0 0 80px var(--blue-color), 0 0 100px var(--blue-shadow);
         }
-
 
         /* Video YouTube responsivo */
         .video-wrapper {
@@ -323,7 +321,9 @@
                     <p><b>AVISO:</b> No usar en partidas clasificatorias.</p>
                     <p><b>CREADOR:</b> Yisus.</p>
                     <p><b>INCLUYE:</b> Archivos .apk y scripts.</p>
-                    <p><b>CONTRASEÑA:</b> <span class="blue-text" style="font-weight: bold;">NO TIENE CONTRASEÑA</span></p>
+                    
+                    <p class="blue-text"><b>CONTRASEÑA:</b> NO TIENE CONTRASEÑA</p>
+                    
                     <div class="video-wrapper">
                         <iframe src="" frameborder="0" allowfullscreen id="youtube-video-7"></iframe>
                     </div>
@@ -355,9 +355,7 @@
                 if (document.getElementById(id)) {
                     new YT.Player(id, {
                         events: {
-                            'onStateChange': (event) => {
-                                // Lógica de pausa de música eliminada. Solo se mantiene la función de la API de YouTube.
-                            }
+                            'onStateChange': (event) => {}
                         }
                     });
                 }
