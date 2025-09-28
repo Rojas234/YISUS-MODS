@@ -10,8 +10,7 @@
         :root {
             --blue-color: #5865F2; /* Azul de Discord */
             --blue-shadow: rgba(88, 101, 242, 0.8);
-            /* Nuevo color azul oscuro para el lema */
-            --dark-blue-text: #3a45a6; /* Un tono de azul oscuro */
+            --dark-blue-text: #3a45a6; /* Un tono de azul oscuro (mantido, pero no usado en 'p') */
         }
 
         body {
@@ -44,12 +43,12 @@
             z-index: 2;
         }
 
-        /* 🔥 CAMBIO REALIZADO AQUÍ: COLOR DEL TEXTO 'p' A AZUL OSCURO 🔥 */
+        /* Párrafos - Afecta al lema principal. Vuelve a ser BLANCO. */
         p {
             font-size: 1.3rem;
             margin-bottom: 30px;
             font-weight: bold;
-            color: var(--dark-blue-text); /* Aplicamos el azul oscuro */
+            color: white; /* Color blanco para el lema */
             position: relative;
             z-index: 2;
         }
@@ -149,16 +148,41 @@
             line-height: 1.8;
             letter-spacing: 0.5px;
             text-align: left;
+            /* Color base para las etiquetas: GRIS CLARO */
+            color: #ccc; 
         }
-        .aporte:hover {
-            box-shadow: 0 0 20px var(--blue-color), 0 0 40px var(--blue-color), 0 0 80px var(--blue-color), 0 0 100px var(--blue-shadow);
+        
+        /* El texto de la definición dentro del párrafo es BLANCO */
+        .aporte p {
+            color: white; 
+            font-weight: normal; 
+            margin-bottom: 10px; /* Reducimos el margen del párrafo para el listado */
         }
+        
+        /* La etiqueta en negrita (DESCRIPCION:, CREADOR:, etc.) toma el color gris claro del .aporte */
+        .aporte p b {
+            color: inherit; 
+            font-weight: bold;
+        }
+        
+        /* El título <h2> dentro del aporte también toma el color GRIS CLARO */
         .aporte h2 {
             font-size: 2rem;
-            color: var(--blue-color);
+            color: #ccc; 
             margin-bottom: 15px;
             text-align: center;
         }
+
+        /* Sobrescribir el estilo para el texto de la contraseña (el span) */
+        .blue-text {
+            color: var(--blue-color) !important;
+        }
+
+
+        .aporte:hover {
+            box-shadow: 0 0 20px var(--blue-color), 0 0 40px var(--blue-color), 0 0 80px var(--blue-color), 0 0 100px var(--blue-shadow);
+        }
+
 
         /* Video YouTube responsivo */
         .video-wrapper {
@@ -289,17 +313,17 @@
         <div class="layout">
             <div class="staff-col">
                 <div class="card"><img src="https://cdn.discordapp.com/avatars/1216152197277159535/19640d242d488a806db663676cd90f4b.png"><p><b>Dayron W.</b></p><p class="role">OWNER</p></div>
-                  <div class="card"><img src="https://cdn.discordapp.com/avatars/1271625357262590043/05641c9b08af9ab29773a24b20d7cf96.png"><p><b>Juan D.</b></p><p class="role">OWNER</p></div>
+                <div class="card"><img src="https://cdn.discordapp.com/avatars/1271625357262590043/05641c9b08af9ab29773a24b20d7cf96.png"><p><b>Juan D.</b></p><p class="role">OWNER</p></div>
             </div>
 
             <div id="aportes">
                 <div class="aporte">
-                    <h2>nombre</h2>
-                    <p><b>DESCRIPCION:</b></p>
-                    <p><b>AVISO:</b> ESTE APORTE ES EXCLUSIVAMENTE DE YISUS MODS, EN CASO DE QUE ESTE EN OTRO DISCORD O PAGINA NO SOMOS RESPONSABLES DE KEYLOGGERS .</p>
-                    <p><b>CREADOR:</b></p>
-                    <p><b>INCLUYE:</b></p>
-                    <p><b>CONTRASEÑA:</b> <span style="color: var(--blue-color); font-weight: bold;">NO TIENE CONTRASEÑA</span></p>
+                    <h2>NOMBRE DEL APORTE</h2>
+                    <p><b>DESCRIPCION:</b> Esta es la definición del aporte o mod.</p>
+                    <p><b>AVISO:</b> No usar en partidas clasificatorias.</p>
+                    <p><b>CREADOR:</b> Yisus.</p>
+                    <p><b>INCLUYE:</b> Archivos .apk y scripts.</p>
+                    <p><b>CONTRASEÑA:</b> <span class="blue-text" style="font-weight: bold;">NO TIENE CONTRASEÑA</span></p>
                     <div class="video-wrapper">
                         <iframe src="" frameborder="0" allowfullscreen id="youtube-video-7"></iframe>
                     </div>
@@ -308,8 +332,8 @@
             </div>
             
             <div class="staff-col">
-                   <div class="card"><img src="https://cdn.discordapp.com/avatars/1276038645102547035/520ebe38039f2bcf58caca9cdb0a4e5b.png"><p><b>LAMAR</b></p><p class="role">HELPER</p></div
-                </div>
+                <div class="card"><img src="https://cdn.discordapp.com/avatars/1276038645102547035/520ebe38039f2bcf58caca9cdb0a4e5b.png"><p><b>LAMAR</b></p><p class="role">HELPER</p></div>
+            </div>
         </div>
     </div>
 
@@ -323,7 +347,7 @@
             document.getElementById("mainContent").style.display = "block";
         }
         
-        // Funciones para manejar la API de YouTube (SE MANTIENE para pausar/reanudar videos si es necesario)
+        // Funciones para manejar la API de YouTube (SE MANTIENE)
         function onYouTubeIframeAPIReady() {
             const videoIds = ['youtube-video-1', 'youtube-video-2', 'youtube-video-3', 'youtube-video-4', 'youtube-video-5', 'youtube-video-6', 'youtube-video-7'];
 
