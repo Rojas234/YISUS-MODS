@@ -22,7 +22,8 @@
             left: 0;
             width: 100%;
             height: 100%;
-            background: url('https://i.imgur.com/kXp9RhC.jpeg') no-repeat center center;
+            /* AQUÍ ES DONDE SE HA CAMBIADO LA URL DE LA IMAGEN DE FONDO */
+            background: url('https://i.imgur.com/8QeR34k.jpeg') no-repeat center center;
             background-size: cover;
             z-index: -1;
         }
@@ -244,8 +245,6 @@
             }
         }
 
-        /* Botón Sharingan - ELIMINADO completamente del CSS */
-
         /* Overlay fullscreen Sharingan (Se mantiene por si quieres usarlo en el futuro con otra activación, pero no se usa) */
         #sharingan-overlay {
             position: fixed;
@@ -437,9 +436,6 @@
             }
         }
 
-        // ELIMINADAS: Las funciones activarSharingan() y cerrarSharingan() ya no son necesarias
-        // porque el botón y el overlay del Sharingan fueron eliminados.
-
         // Función para manejar la API de YouTube
         function onYouTubeIframeAPIReady() {
             const videoIds = ['youtube-video-1', 'youtube-video-2', 'youtube-video-3', 'youtube-video-4', 'youtube-video-5', 'youtube-video-6', 'youtube-video-7'];
@@ -486,9 +482,6 @@
             bgMusic.play().catch(e => {
                 console.log("No se pudo iniciar la música automáticamente. Requiere interacción del usuario.", e);
             });
-
-            // ELIMINADA: La lógica relacionada con 'sessionStorage.getItem("sharinganActivo")'
-            // ya no es necesaria al eliminar el botón y la funcionalidad del Sharingan.
         });
     </script>
 </body>
