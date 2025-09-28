@@ -6,10 +6,11 @@
     <title>YISUS MODS</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
     <style>
-        /* Definimos un color azul para los aportes */
+        /* Definimos un color azul para los aportes y staff */
         :root {
             --blue-color: #5865F2; /* Azul de Discord */
             --blue-shadow: rgba(88, 101, 242, 0.8);
+            --red-color: red; /* Mantenemos el rojo solo para el botón de música 'playing' */
         }
 
         body {
@@ -28,16 +29,17 @@
             left: 0;
             width: 100%;
             height: 100%;
-            /* ¡FONDO ACTUALIZADO con el nuevo enlace PNG! */
             background: url('https://i.imgur.com/2vqWTaD.png') no-repeat center center;
             background-size: cover;
             z-index: -1;
         }
 
+        /* Título Principal */
         h1 {
             font-size: 3rem;
             margin-top: 20px;
-            text-shadow: 2px 2px 8px red;
+            /* 🔥 CAMBIO A AZUL 🔥 */
+            text-shadow: 2px 2px 8px var(--blue-color);
             position: relative;
             z-index: 2;
         }
@@ -50,7 +52,7 @@
             z-index: 2;
         }
 
-        /* Redes sociales */
+        /* Redes sociales (Sin cambios aquí) */
         .socials {
             margin-top: 20px;
             position: relative;
@@ -82,7 +84,7 @@
 
         /* Botón música - Estados dinámicos + animación */
         .music-btn {
-            margin: 30px auto; /* Centrado horizontalmente */
+            margin: 30px auto;
             padding: 10px 20px;
             border: 2px solid white;
             border-radius: 10px;
@@ -115,25 +117,26 @@
 
         /* Estado encendido (playing) */
         .music-btn.playing {
-            background: red;
-            border-color: red;
+            /* Se mantiene el rojo aquí */
+            background: var(--red-color); 
+            border-color: var(--red-color);
             color: white;
-            box-shadow: 0 0 10px red, 0 0 20px rgba(255, 0, 0, 0.8);
+            box-shadow: 0 0 10px var(--red-color), 0 0 20px rgba(255, 0, 0, 0.8);
             animation: pulse 1.5s infinite alternate;
         }
         .music-btn.playing:hover {
             background: darkred;
             border-color: darkred;
-            box-shadow: 0 0 15px red, 0 0 30px rgba(255, 0, 0, 1);
+            box-shadow: 0 0 15px var(--red-color), 0 0 30px rgba(255, 0, 0, 1);
         }
 
         @keyframes pulse {
             from {
-                box-shadow: 0 0 10px red, 0 0 20px rgba(255, 0, 0, 0.8);
+                box-shadow: 0 0 10px var(--red-color), 0 0 20px rgba(255, 0, 0, 0.8);
                 transform: scale(1);
             }
             to {
-                box-shadow: 0 0 20px red, 0 0 40px rgba(255, 0, 0, 1);
+                box-shadow: 0 0 20px var(--red-color), 0 0 40px rgba(255, 0, 0, 1);
                 transform: scale(1.02);
             }
         }
@@ -141,7 +144,6 @@
         /* Layout */
         .layout {
             display: grid;
-            /* 1fr para Staff (izquierda), 3fr para Aportes (centro, más ancho), 1fr para Staff (derecha) */
             grid-template-columns: 1fr 3fr 1fr; 
             gap: 20px;
             margin-top: 40px;
@@ -154,52 +156,53 @@
             gap: 20px;
             align-items: center;
         }
+        
+        /* 🔥 CAMBIO A AZUL 🔥 */
         .card {
             background: #111;
             padding: 15px;
             border-radius: 12px;
             width: 150px;
             text-align: center;
-            box-shadow: 0 0 10px red, 0 0 20px rgba(255,0,0,0.6);
+            box-shadow: 0 0 10px var(--blue-color), 0 0 20px var(--blue-shadow);
             animation: glow 2s infinite alternate;
         }
+        
+        /* 🔥 CAMBIO A AZUL 🔥 */
         @keyframes glow {
-            from { box-shadow: 0 0 10px red; }
-            to { box-shadow: 0 0 25px red, 0 0 50px rgba(255,0,0,0.9);}
+            from { box-shadow: 0 0 10px var(--blue-color); }
+            to { box-shadow: 0 0 25px var(--blue-color), 0 0 50px var(--blue-shadow);}
         }
+        
+        /* 🔥 CAMBIO A AZUL 🔥 */
         .card img {
             border-radius: 50%;
             width: 80px;
             height: 80px;
             margin-bottom: 8px;
-            border: 2px solid red;
+            border: 2px solid var(--blue-color);
         }
         .card .role { font-size: 13px; color: #bbb; }
         
         /* Aportes (Contenedor principal para centrar) */
         #aportes {
-            /* Reglas para centrar el contenido de esta celda en la cuadrícula */
             display: flex;
             flex-direction: column;
             align-items: center;
-            /* Se aplica un ancho máximo para que no ocupe todo el 3fr en pantallas muy grandes */
             max-width: 800px; 
             margin: 0 auto; 
-            padding: 0 20px; /* Pequeño padding para evitar que toque los bordes en móvil */
+            padding: 0 20px; 
         }
         
-        /* Aporte individual */
+        /* Aporte individual (Ya estaba en azul) */
         .aporte {
             background: rgba(0, 0, 0, 0.7);
             padding: 30px;
             border-radius: 15px;
             margin-bottom: 40px;
-            width: 100%; /* Ocupa el 100% del contenedor #aportes */
-            
-            /* 🔥 CAMBIO A AZUL 🔥 */
+            width: 100%;
             border: 2px solid var(--blue-color);
             box-shadow: 0 0 10px var(--blue-color), 0 0 20px var(--blue-color), 0 0 40px var(--blue-color), 0 0 60px var(--blue-shadow);
-            
             transition: 0.3s;
             position: relative;
             z-index: 2;
@@ -208,18 +211,16 @@
             text-align: left;
         }
         .aporte:hover {
-            /* 🔥 CAMBIO A AZUL 🔥 */
             box-shadow: 0 0 20px var(--blue-color), 0 0 40px var(--blue-color), 0 0 80px var(--blue-color), 0 0 100px var(--blue-shadow);
         }
         .aporte h2 {
             font-size: 2rem;
-            /* 🔥 CAMBIO A AZUL, para mantener la coherencia */
             color: var(--blue-color); 
             margin-bottom: 15px;
             text-align: center;
         }
 
-        /* Video YouTube responsivo */
+        /* Video YouTube responsivo (Sin cambios aquí) */
         .video-wrapper {
             position: relative;
             padding-bottom: 56.25%;
@@ -234,37 +235,31 @@
             width: 100%; height: 100%;
         }
 
+        /* Botón de Descarga (Ya estaba en azul) */
         .download-btn {
             display: inline-block;
             margin-top: 20px;
             padding: 12px 25px;
-            
-            /* 🔥 CAMBIO A AZUL 🔥 */
             background: var(--blue-color);
-            
             color: white;
             font-weight: bold;
             border-radius: 12px;
             text-decoration: none;
             font-size: 1.2rem;
             transition: 0.3s;
-            
-            /* 🔥 CAMBIO A AZUL 🔥 */
             box-shadow: 0 0 10px var(--blue-color), 0 0 20px var(--blue-color), 0 0 30px var(--blue-shadow);
         }
         .download-btn:hover {
-            /* 🔥 CAMBIO A AZUL 🔥 */
-            background: #4a54c9; /* Tono de azul oscuro */
+            background: #4a54c9; 
             box-shadow: 0 0 20px var(--blue-color), 0 0 40px var(--blue-color), 0 0 60px var(--blue-color);
         }
 
         /* Responsive */
         @media (max-width: 768px) {
             .layout { 
-                /* Cambiamos el layout para que las columnas de staff y aportes se muestren en bloque */
                 display: flex;
                 flex-direction: column;
-                gap: 0; /* Quitamos el gap */
+                gap: 0; 
             }
             .staff-col {
                 flex-direction: row;
@@ -279,7 +274,10 @@
                 scroll-snap-align: start;
             }
             
-            /* Ajuste para móvil para que el contenido de aportes ocupe el ancho completo */
+            .card img {
+                border: 2px solid var(--blue-color); /* Aseguramos que el borde sea azul en móvil */
+            }
+
             #aportes {
                 padding: 20px;
                 max-width: none;
@@ -287,7 +285,7 @@
             }
         }
 
-        /* Overlay fullscreen Sharingan (Se mantiene por si quieres usarlo en el futuro con otra activación, pero no se usa) */
+        /* Overlay fullscreen Sharingan (Sin cambios aquí) */
         #sharingan-overlay {
             position: fixed;
             top: 0; left: 0;
