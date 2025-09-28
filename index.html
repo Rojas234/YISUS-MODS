@@ -279,38 +279,57 @@
                 margin: 0;
             }
         }
-
-        /* Overlay fullscreen Sharingan (Sin cambios aquí) */
-        #sharingan-overlay {
+        
+        /* ESTILOS AÑADIDOS PARA LA PANTALLA DE ENTRADA */
+        #intro-overlay {
             position: fixed;
             top: 0; left: 0;
             width: 100%; height: 100%;
             background: black;
             display: flex;
+            flex-direction: column;
             align-items: center;
             justify-content: center;
-            z-index: 2000;
-            opacity: 0;
-            visibility: hidden;
-            transition: opacity 0.6s;
+            z-index: 3000;
         }
-        #sharingan-overlay img {
-            max-width: 80%;
+        #intro-overlay img {
+            max-width: 100%;
             max-height: 80%;
-            width: auto;
-            height: auto;
             object-fit: contain;
-            background-color: black;
-            border-radius: 50%;
+            margin-bottom: 30px; /* Espacio para el botón */
         }
-        #sharingan-overlay.active {
-            opacity: 1;
-            visibility: visible;
+        #intro-overlay button {
+            margin-top: 20px;
+            padding: 15px 30px;
+            font-size: 1.5rem;
+            font-weight: bold;
+            color: white;
+            background: var(--blue-color); /* Usamos el color del tema */
+            border: none;
+            border-radius: 12px;
+            cursor: pointer;
+            box-shadow: 0 0 20px var(--blue-color), 0 0 40px var(--blue-shadow);
+            transition: 0.3s;
+            -webkit-tap-highlight-color: transparent;
+        }
+        #intro-overlay button:hover {
+            background: #4a54c9; /* Tono más oscuro */
+            box-shadow: 0 0 40px var(--blue-color), 0 0 60px var(--blue-shadow);
+        }
+        
+        /* Contenido principal oculto al inicio */
+        #mainContent {
+            display: none;
         }
     </style>
 </head>
 <body>
     <div class="background-container"></div>
+
+    <div id="intro-overlay">
+        <img src="https://i.imgur.com/2vqWTaD.png" alt="Bienvenido"> 
+        <button onclick="enterSite()">ENTRAR</button>
+    </div>
 
     <div id="mainContent">
         <h1>YISUS MODS</h1>
@@ -362,6 +381,17 @@
         const musicBtn = document.getElementById("musicToggle");
         let isMusicPlaying = false; 
 
+        // LOGICA DE REPRODUCCIÓN AL ENTRAR
+        function enterSite() {
+            // 1. Oculta la pantalla de entrada y muestra el contenido principal
+            document.getElementById("intro-overlay").style.display = "none";
+            document.getElementById("mainContent").style.display = "block";
+            
+            // 2. Intenta reproducir la música inmediatamente después de la interacción.
+            // Esto SÍ funciona porque el usuario hizo clic en el botón 'ENTRAR'.
+            bgMusic.play().catch(e => console.log("La reproducción automática fue bloqueada o falló:", e));
+        }
+
         // Eventos del audio para sincronizar estado visual
         bgMusic.onplay = function() {
             isMusicPlaying = true;
@@ -378,8 +408,8 @@
         };
 
         function toggleMusic() {
+            // Maneja el clic en el botón de música ya dentro del sitio
             if (bgMusic.paused) {
-                // El navegador permite la reproducción porque el usuario hizo clic.
                 bgMusic.play().catch(e => console.log("Error al reproducir: ", e));
             } else {
                 bgMusic.pause();
@@ -399,6 +429,10 @@
                                 if (event.data === YT.PlayerState.PLAYING && isMusicPlaying) {
                                     bgMusic.pause();
                                 } 
+                                // Opcional: Reanudar la música de fondo si el video termina o se pausa
+                                /* else if ((event.data === YT.PlayerState.ENDED || event.data === YT.PlayerState.PAUSED) && !bgMusic.paused) {
+                                     // bgMusic.play().catch(e => console.log("Error al reanudar la música: ", e));
+                                } */
                             }
                         }
                     });
@@ -419,9 +453,8 @@
             }
         }
 
-        window.addEventListener("load", () => {
-            loadYouTubeAPI();
-        });
+        // Cargar la API de YouTube cuando el documento esté listo (sin interferir con el audio)
+        document.addEventListener('DOMContentLoaded', loadYouTubeAPI); 
     </script>
 </body>
 </html>
