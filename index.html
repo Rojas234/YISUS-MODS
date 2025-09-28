@@ -10,7 +10,8 @@
         :root {
             --blue-color: #5865F2; /* Azul de Discord */
             --blue-shadow: rgba(88, 101, 242, 0.8);
-            /* --red-color se elimina porque ya no hay botón de música */
+            /* Nuevo color azul oscuro para el lema */
+            --dark-blue-text: #3a45a6; /* Un tono de azul oscuro */
         }
 
         body {
@@ -43,10 +44,12 @@
             z-index: 2;
         }
 
+        /* 🔥 CAMBIO REALIZADO AQUÍ: COLOR DEL TEXTO 'p' A AZUL OSCURO 🔥 */
         p {
             font-size: 1.3rem;
             margin-bottom: 30px;
             font-weight: bold;
+            color: var(--dark-blue-text); /* Aplicamos el azul oscuro */
             position: relative;
             z-index: 2;
         }
@@ -282,7 +285,7 @@
             <a href="https://www.roblox.com/es/users/876739995/profile" target="_blank" class="roblox"><i class="fa-solid fa-cube"></i> Roblox</a>
             <a href="https://discord.gg/QZUzDRyw" target="_blank" class="discord" style="margin-top:15px; display:inline-block;"><i class="fa-brands fa-discord"></i> DC - YISUS MODS</a>
         </div>
-        
+
         <div class="layout">
             <div class="staff-col">
                 <div class="card"><img src="https://cdn.discordapp.com/avatars/1216152197277159535/19640d242d488a806db663676cd90f4b.png"><p><b>Dayron W.</b></p><p class="role">ADMINISTRADOR</p></div>
@@ -316,7 +319,6 @@
             document.getElementById("intro-overlay").style.display = "none";
             // 2. Muestra el contenido principal
             document.getElementById("mainContent").style.display = "block";
-            // ¡No hay bgMusic.play() ni manejo de errores de audio!
         }
         
         // Funciones para manejar la API de YouTube (SE MANTIENE para pausar/reanudar videos si es necesario)
