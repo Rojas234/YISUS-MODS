@@ -148,31 +148,31 @@
             line-height: 1.8;
             letter-spacing: 0.5px;
             text-align: left;
-            /* Color base para la DEFINICIÓN/VALOR: BLANCO */
-            color: white; 
+            /* Color base para la DEFINICIÓN/VALOR: AZUL BRILLANTE */
+            color: var(--blue-color); 
         }
 
-        /* La etiqueta en negrita (DESCRIPCION:, CREADOR:, etc.) es GRIS CLARO */
+        /* La etiqueta en negrita (DESCRIPCION:, CREADOR:, etc.) es BLANCA PURA */
         .aporte p b {
-            color: #ccc; 
+            color: white; 
             font-weight: bold;
         }
 
-        /* El título <h2> dentro del aporte es GRIS CLARO, igual que las etiquetas */
+        /* El título <h2> dentro del aporte es BLANCO PURO, igual que las etiquetas */
         .aporte h2 {
             font-size: 2rem;
-            color: #ccc; 
+            color: white; 
             margin-bottom: 15px;
             text-align: center;
         }
         
-        /* ESTILO ESPECIAL PARA CONTRASEÑA: Hace que toda la línea sea AZUL y NEGRITA */
-        .blue-text {
-            color: var(--blue-color) !important;
-            font-weight: bold !important;
+        /* Aseguramos que el resto de estilos no interfieran con el nuevo esquema */
+        .aporte p {
+            font-weight: normal; /* El texto de la definición no necesita negrita */
         }
-        /* Aseguramos que el <b> dentro de la contraseña también sea azul */
-        .blue-text b {
+        
+        /* Quitamos estilos innecesarios que interferían */
+        .blue-text, .blue-text b {
             color: var(--blue-color) !important;
             font-weight: bold !important;
         }
@@ -317,12 +317,12 @@
             <div id="aportes">
                 <div class="aporte">
                     <h2>NOMBRE DEL APORTE</h2>
-                    <p><b>DESCRIPCION:</b> Esta es la definición del aporte o mod.</p>
-                    <p><b>AVISO:</b> No usar en partidas clasificatorias.</p>
-                    <p><b>CREADOR:</b> Yisus.</p>
-                    <p><b>INCLUYE:</b> Archivos .apk y scripts.</p>
+                    <p><b>DESCRIPCION:</b>Esta es la definición del aporte o mod.</p>
+                    <p><b>AVISO:</b>No usar en partidas clasificatorias.</p>
+                    <p><b>CREADOR:</b>Yisus.</p>
+                    <p><b>INCLUYE:</b>Archivos .apk y scripts.</p>
                     
-                    <p class="blue-text"><b>CONTRASEÑA:</b> NO TIENE CONTRASEÑA</p>
+                    <p><b>CONTRASEÑA:</b> NO TIENE CONTRASEÑA</p>
                     
                     <div class="video-wrapper">
                         <iframe src="" frameborder="0" allowfullscreen id="youtube-video-7"></iframe>
