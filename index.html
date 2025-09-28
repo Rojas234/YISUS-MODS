@@ -38,7 +38,6 @@
         h1 {
             font-size: 3rem;
             margin-top: 20px;
-            /* 🔥 CAMBIO A AZUL 🔥 */
             text-shadow: 2px 2px 8px var(--blue-color);
             position: relative;
             z-index: 2;
@@ -117,7 +116,6 @@
 
         /* Estado encendido (playing) */
         .music-btn.playing {
-            /* Se mantiene el rojo aquí */
             background: var(--red-color); 
             border-color: var(--red-color);
             color: white;
@@ -157,7 +155,6 @@
             align-items: center;
         }
         
-        /* 🔥 CAMBIO A AZUL 🔥 */
         .card {
             background: #111;
             padding: 15px;
@@ -168,13 +165,11 @@
             animation: glow 2s infinite alternate;
         }
         
-        /* 🔥 CAMBIO A AZUL 🔥 */
         @keyframes glow {
             from { box-shadow: 0 0 10px var(--blue-color); }
             to { box-shadow: 0 0 25px var(--blue-color), 0 0 50px var(--blue-shadow);}
         }
         
-        /* 🔥 CAMBIO A AZUL 🔥 */
         .card img {
             border-radius: 50%;
             width: 80px;
@@ -194,7 +189,7 @@
             padding: 0 20px; 
         }
         
-        /* Aporte individual (Ya estaba en azul) */
+        /* Aporte individual */
         .aporte {
             background: rgba(0, 0, 0, 0.7);
             padding: 30px;
@@ -220,7 +215,7 @@
             text-align: center;
         }
 
-        /* Video YouTube responsivo (Sin cambios aquí) */
+        /* Video YouTube responsivo */
         .video-wrapper {
             position: relative;
             padding-bottom: 56.25%;
@@ -235,7 +230,7 @@
             width: 100%; height: 100%;
         }
 
-        /* Botón de Descarga (Ya estaba en azul) */
+        /* Botón de Descarga */
         .download-btn {
             display: inline-block;
             margin-top: 20px;
@@ -275,7 +270,7 @@
             }
             
             .card img {
-                border: 2px solid var(--blue-color); /* Aseguramos que el borde sea azul en móvil */
+                border: 2px solid var(--blue-color);
             }
 
             #aportes {
@@ -365,7 +360,7 @@
         // Inicializar la música de fondo
         const bgMusic = document.getElementById("bg-music");
         const musicBtn = document.getElementById("musicToggle");
-        let isMusicPlaying = false;
+        let isMusicPlaying = false; // Estado para rastrear si el usuario desea que la música esté activa
 
         // Eventos del audio para sincronizar estado visual
         bgMusic.onplay = function() {
@@ -383,14 +378,24 @@
         };
 
         function toggleMusic() {
+            // El usuario interactuó (hizo clic en el botón)
             if (bgMusic.paused) {
+                // Si la música está en pausa, intenta reproducirla
                 bgMusic.play().catch(e => console.log("Error al reproducir: ", e));
             } else {
+                // Si está sonando, pausala
                 bgMusic.pause();
             }
         }
+        
+        /* NOTA IMPORTANTE: 
+         - Se ha eliminado el intento de "autoplay" al cargar la ventana (window.addEventListener("load")) 
+           porque es bloqueado por los navegadores. 
+         - La música ahora se iniciará SÓLO cuando el usuario haga clic en el botón "encender música", 
+           que es la interacción requerida por los navegadores.
+        */
 
-        // Función para manejar la API de YouTube
+        // Funciones para manejar la API de YouTube (Se mantienen sin cambios, solo se cargan si es necesario)
         function onYouTubeIframeAPIReady() {
             const videoIds = ['youtube-video-1', 'youtube-video-2', 'youtube-video-3', 'youtube-video-4', 'youtube-video-5', 'youtube-video-6', 'youtube-video-7'];
 
@@ -399,12 +404,15 @@
                     new YT.Player(id, {
                         events: {
                             'onStateChange': (event) => {
+                                // Pausar la música de fondo si se reproduce un video de YouTube
                                 if (event.data === YT.PlayerState.PLAYING && isMusicPlaying) {
                                     bgMusic.pause();
-                                    isMusicPlaying = false;
-                                } else if ((event.data === YT.PlayerState.ENDED || event.data === YT.PlayerState.PAUSED) && !isMusicPlaying) {
-                                    // Comentario de lógica de reproducción se mantiene
-                                }
+                                } 
+                                // Opcional: Reanudar la música de fondo si el video termina o se pausa
+                                // Este comportamiento puede ser molesto, por lo que se deja comentado
+                                /* else if ((event.data === YT.PlayerState.ENDED || event.data === YT.PlayerState.PAUSED) && !bgMusic.paused) {
+                                     // bgMusic.play().catch(e => console.log("Error al reanudar la música: ", e));
+                                } */
                             }
                         }
                     });
@@ -427,10 +435,7 @@
 
         window.addEventListener("load", () => {
             loadYouTubeAPI();
-            // Intento de reproducción automática de la música.
-            bgMusic.play().catch(e => {
-                console.log("No se pudo iniciar la música automáticamente. Requiere interacción del usuario.", e);
-            });
+            // Eliminado el intento de bgMusic.play() aquí. La música solo comenzará con el clic del usuario.
         });
     </script>
 </body>
