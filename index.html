@@ -51,7 +51,7 @@
             z-index: 2;
         }
 
-        /* Redes sociales (Sin cambios aquí) */
+        /* Redes sociales */
         .socials {
             margin-top: 20px;
             position: relative;
@@ -323,7 +323,7 @@
         </div>
 
         <audio id="bg-music" loop>
-            <source src="https://files.catbox.moe/c5clgr.mp3" type="audio/mpeg">
+            <source src="[PEGA_AQUÍ_TU_ENLACE_DIRECTO_DE_DISCORD]" type="audio/mpeg">
         </audio>
         <button class="music-btn paused" id="musicToggle" onclick="toggleMusic()"><i class="fa-solid fa-play"></i> encender música</button>
 
@@ -353,14 +353,14 @@
     </div>
 
     <audio id="Music-sound">
-        <source src="https://files.catbox.moe/c5clgr.mp3" type="audio/mpeg">
+        <source src="[PEGA_AQUÍ_TU_ENLACE_DIRECTO_DE_DISCORD]" type="audio/mpeg">
     </audio>
 
     <script>
         // Inicializar la música de fondo
         const bgMusic = document.getElementById("bg-music");
         const musicBtn = document.getElementById("musicToggle");
-        let isMusicPlaying = false; // Estado para rastrear si el usuario desea que la música esté activa
+        let isMusicPlaying = false; 
 
         // Eventos del audio para sincronizar estado visual
         bgMusic.onplay = function() {
@@ -378,24 +378,15 @@
         };
 
         function toggleMusic() {
-            // El usuario interactuó (hizo clic en el botón)
             if (bgMusic.paused) {
-                // Si la música está en pausa, intenta reproducirla
+                // El navegador permite la reproducción porque el usuario hizo clic.
                 bgMusic.play().catch(e => console.log("Error al reproducir: ", e));
             } else {
-                // Si está sonando, pausala
                 bgMusic.pause();
             }
         }
         
-        /* NOTA IMPORTANTE: 
-         - Se ha eliminado el intento de "autoplay" al cargar la ventana (window.addEventListener("load")) 
-           porque es bloqueado por los navegadores. 
-         - La música ahora se iniciará SÓLO cuando el usuario haga clic en el botón "encender música", 
-           que es la interacción requerida por los navegadores.
-        */
-
-        // Funciones para manejar la API de YouTube (Se mantienen sin cambios, solo se cargan si es necesario)
+        // Funciones para manejar la API de YouTube (Se mantienen)
         function onYouTubeIframeAPIReady() {
             const videoIds = ['youtube-video-1', 'youtube-video-2', 'youtube-video-3', 'youtube-video-4', 'youtube-video-5', 'youtube-video-6', 'youtube-video-7'];
 
@@ -408,11 +399,6 @@
                                 if (event.data === YT.PlayerState.PLAYING && isMusicPlaying) {
                                     bgMusic.pause();
                                 } 
-                                // Opcional: Reanudar la música de fondo si el video termina o se pausa
-                                // Este comportamiento puede ser molesto, por lo que se deja comentado
-                                /* else if ((event.data === YT.PlayerState.ENDED || event.data === YT.PlayerState.PAUSED) && !bgMusic.paused) {
-                                     // bgMusic.play().catch(e => console.log("Error al reanudar la música: ", e));
-                                } */
                             }
                         }
                     });
@@ -435,7 +421,6 @@
 
         window.addEventListener("load", () => {
             loadYouTubeAPI();
-            // Eliminado el intento de bgMusic.play() aquí. La música solo comenzará con el clic del usuario.
         });
     </script>
 </body>
