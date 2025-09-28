@@ -48,7 +48,7 @@
             font-size: 1.3rem;
             margin-bottom: 30px;
             font-weight: bold;
-            color: blue /* Color blanco para el lema principal */
+            color: white; /* Color blanco para el lema principal */
             position: relative;
             z-index: 2;
         }
@@ -149,35 +149,26 @@
             letter-spacing: 0.5px;
             text-align: left;
             /* Color base para la DEFINICIÓN/VALOR: AZUL BRILLANTE */
-            color: blue(--blue-color); 
+            color: var(--blue-color); 
         }
 
-        /* El título <h2> dentro del aporte es BLANCO PURO */
+        /* La etiqueta en negrita (DESCRIPCION:, CREADOR:, etc.) es BLANCA PURA */
+        .aporte p b {
+            color: white; 
+            font-weight: bold;
+        }
+
+        /* El título <h2> dentro del aporte es BLANCO PURO, igual que las etiquetas */
         .aporte h2 {
             font-size: 2rem;
             color: white; 
             margin-bottom: 15px;
             text-align: center;
-            padding-bottom: 10px;
-            border-bottom: 2px solid var(--blue-color);
-            text-shadow: 0 0 5px var(--blue-shadow); 
         }
-
-        /* Estilo para los párrafos de información */
+        
+        /* Aseguramos que el resto de estilos no interfieran con el nuevo esquema */
         .aporte p {
             font-weight: normal; /* El texto de la definición no necesita negrita */
-            margin: 5px 0; /* Espaciado ajustado entre líneas */
-            color: white;
-        }
-        .aporte p {
-            font-weight: 400; 
-            margin: 10px 0;
-            color: white(--white-color); /* Asegura que la definición sea azul */
-
-        /* La etiqueta en negrita (DESCRIPCION:, CREADOR:, etc.) es BLANCA PURA */
-        .aporte p b {
-            color: var 
-            font-weight: bold;
         }
         
         /* Quitamos estilos innecesarios que interferían */
@@ -325,12 +316,11 @@
 
             <div id="aportes">
                 <div class="aporte">
-                    <h2>MOD MENÚ DE PRUEBA V3</h2>
-                    <p><b>DESCRIPCION:</b> Este es un mod menú de prueba que incluye varias funciones para testear en partidas de práctica.</p>
+                    <h2>NOMBRE DEL APORTE</h2>
+                    <p><b>DESCRIPCION:</b></p>
                     <p><b>AVISO:</b> ESTE APORTE ES EXCLUSIVAMENTE DE YISUS MODS, EN CASO DE QUE ESTE EN OTRO DISCORD O PAGINA NO SOMOS RESPONSABLES DE KEYLOGGERS.</p>
-                    <p><b>CREADOR:</b> Dayron W.</p>
-                    <p><b>INCLUYE:</b> Archivos .apk y scripts necesarios para la instalación manual.</p>
-                    <p><b>VERSION:</b> 3.0 (Estable)</p>
+                    <p><b>CREADOR:</b></p>
+                    <p><b>INCLUYE:</b></p>
                     <p><b>CONTRASEÑA:</b> NO TIENE CONTRASEÑA</p>
                     
                     <div class="video-wrapper">
