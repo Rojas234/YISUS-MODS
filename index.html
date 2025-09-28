@@ -244,62 +244,9 @@
             }
         }
 
-        /* Botón Sharingan - FIX para Android (Mantener si quieres el botón en la esquina) */
-        .sharingan-btn {
-            position: fixed;
-            bottom: 20px;
-            right: 20px;
-            width: 50px;
-            height: 50px;
-            cursor: pointer;
-            z-index: 1000;
-            outline: none;
-            border: none;
-            user-select: none;
-            -webkit-tap-highlight-color: transparent;
-            touch-action: manipulation;
-            -webkit-user-select: none;
-            -webkit-touch-callout: none;
-        }
-        .sharingan-btn img {
-            width: 100%;
-            height: 100%;
-            border-radius: 50%;
-            animation: spin 4s linear infinite, glowRed 1.5s infinite alternate;
-        }
-        .sharingan-btn:focus,
-        .sharingan-btn:active {
-            outline: none !important;
-            box-shadow: none !important;
-            background-color: transparent !important;
-        }
-        @media (hover: none) and (pointer: coarse) {
-            .sharingan-btn {
-                -webkit-tap-highlight-color: transparent !important;
-                touch-action: manipulation !important;
-            }
-            .sharingan-btn:active img {
-                animation-play-state: paused;
-            }
-            .sharingan-btn::before {
-                content: '';
-                position: absolute;
-                top: 0; left: 0;
-                width: 100%; height: 100%;
-                background-color: transparent;
-                border-radius: 50%;
-            }
-        }
-        @keyframes spin {
-            from { transform: rotate(0deg); }
-            to { transform: rotate(360deg); }
-        }
-        @keyframes glowRed {
-            from { box-shadow: 0 0 5px red; }
-            to { box-shadow: 0 0 20px red, 0 0 40px red; }
-        }
+        /* Botón Sharingan - ELIMINADO completamente del CSS */
 
-        /* Overlay fullscreen Sharingan (Mantener para la función del botón) */
+        /* Overlay fullscreen Sharingan (Se mantiene por si quieres usarlo en el futuro con otra activación, pero no se usa) */
         #sharingan-overlay {
             position: fixed;
             top: 0; left: 0;
@@ -325,12 +272,6 @@
         #sharingan-overlay.active {
             opacity: 1;
             visibility: visible;
-        }
-
-        /* GIF de entrada - ELIMINADO del CSS ya que se quita el div */
-        /* Contenido principal - ELIMINADO 'display: none;' */
-        #mainContent {
-             /* Ya no es necesario 'display: none;' */
         }
     </style>
 </head>
@@ -454,21 +395,13 @@
             <div class="staff-col">
                 <div class="card"><img src="https://cdn.discordapp.com/avatars/1216152197277159535/19640d242d488a806db663676cd90f4b.png"><p><b>Dayron W.</b></p><p class="role">ADMINISTRADOR</p></div>
                 <div class="card"><img src="https://cdn.discordapp.com/avatars/1386421165052002366/a_e752489e8b37d4af5efefbb1bb796f40.gif"><p><b>David</b></p><p class="role">JUNIOR ADMIN</p></div>
-                <div class="card"><img src="https://cdn.discordapp.com/avatars/1000966605729181847/9de61981cbe4d9ba985aace65cec1ef.png"><p><b>R.R</b></p><p class="role">HEAD MODERADOR</p></div>
+                <div class="card"><img src="https://cdn.discordapp.com/avatars/1000966605729181847/9de61981cbe4d9ba985aace659cec1ef.png"><p><b>R.R</b></p><p class="role">HEAD MODERADOR</p></div>
                 <div class="card"><img src="https://cdn.discordapp.com/avatars/1378867547394408470/16c25c75f2c2b78f72b57ba2be733215.png"><p><b>Daniel</b></p><p class="role">JUNIOR ADMIN</p></div>
                 <div class="card"><img src="https://cdn.discordapp.com/avatars/1269114900932984862/731c55d188d328718ea1f9bb0f965106.png"><p><b>jackson</b></p><p class="role">JUNIOR ADMIN</p></div>
                 <div class="card"><img src="https://cdn.discordapp.com/avatars/1337927773884252282/6964a68bf223249a5602a6a65413e4c0.png"><p><b>jack</b></p><p class="role">STAR HELPER</p></div>
                 <div class="card"><img src="https://cdn.discordapp.com/avatars/1297359221280739389/d3ce5d850b8408e49bd0fecc0f679a7e.png"><p><b>yerlin</b></p><p class="role">STAR HELPER</p></div>
             </div>
         </div>
-    </div>
-
-    <div class="sharingan-btn" onclick="activarSharingan()">
-        <img src="https://media0.giphy.com/media/v1.Y2lkPTc5MGI3NjExc2VjcXMzdmR5bTc4b3RpN3FmeGlrd3M3ZzltNjY4bmY0c2F2MmtnYyZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/AD9YKaY2vxTXO/giphy.gif" alt="Sharingan">
-    </div>
-
-    <div id="sharingan-overlay" onclick="cerrarSharingan()">
-        <img src="https://i.pinimg.com/originals/44/9c/17/449c175588d56442fd162990ac428759.gif" alt="Sharingan Efecto">
     </div>
 
     <audio id="sharingan-sound">
@@ -498,32 +431,14 @@
 
         function toggleMusic() {
             if (bgMusic.paused) {
-                // Intenta reproducir la música al cargar
                 bgMusic.play().catch(e => console.log("Error al reproducir: ", e));
             } else {
                 bgMusic.pause();
             }
         }
 
-        // ELIMINADA: La función enterSite() ya no es necesaria.
-
-        function activarSharingan() {
-            const overlay = document.getElementById("sharingan-overlay");
-            const sound = document.getElementById("sharingan-sound");
-
-            overlay.classList.add("active");
-            sound.play();
-
-            setTimeout(() => {
-                sessionStorage.setItem("sharinganActivo", "true");
-                window.location.href = "aportes-exclusivos.html";
-            }, 3000);
-        }
-
-        function cerrarSharingan() {
-            const overlay = document.getElementById("sharingan-overlay");
-            overlay.classList.remove("active");
-        }
+        // ELIMINADAS: Las funciones activarSharingan() y cerrarSharingan() ya no son necesarias
+        // porque el botón y el overlay del Sharingan fueron eliminados.
 
         // Función para manejar la API de YouTube
         function onYouTubeIframeAPIReady() {
@@ -538,11 +453,10 @@
                                     bgMusic.pause();
                                     isMusicPlaying = false;
                                 } else if ((event.data === YT.PlayerState.ENDED || event.data === YT.PlayerState.PAUSED) && !isMusicPlaying) {
-                                    // La música de fondo solo se reanuda si NO estaba tocando antes (aunque ahora siempre estará en pausa al inicio)
-                                    // Comentar o eliminar esta lógica si no quieres que la música de fondo se reproduzca automáticamente.
-                                    // Si quieres que se reproduzca automáticamente al cargar la página:
-                                    // bgMusic.play(); 
-                                    // isMusicPlaying = true;
+                                    // Esta lógica de reanudar la música de fondo si un video de YouTube termina o se pausa
+                                    // se mantiene, pero la música de fondo solo se reproduce si no estaba tocando antes.
+                                    // Si quieres que se reproduzca SIEMPRE al pausar/terminar un video de YouTube,
+                                    // quita el '&& !isMusicPlaying' de la condición y considera descomentar bgMusic.play();
                                 }
                             }
                         }
@@ -564,7 +478,6 @@
             }
         }
 
-        // **AÑADIDO: Reproducción automática de música de fondo (Si lo deseas)**
         window.addEventListener("load", () => {
             loadYouTubeAPI();
             // Intento de reproducción automática de la música.
@@ -574,11 +487,8 @@
                 console.log("No se pudo iniciar la música automáticamente. Requiere interacción del usuario.", e);
             });
 
-            // Lógica del sharingan (se mantiene aunque ya no afecta la entrada principal)
-            if (sessionStorage.getItem("sharinganActivo")) {
-                cerrarSharingan();
-                sessionStorage.removeItem("sharinganActivo");
-            }
+            // ELIMINADA: La lógica relacionada con 'sessionStorage.getItem("sharinganActivo")'
+            // ya no es necesaria al eliminar el botón y la funcionalidad del Sharingan.
         });
     </script>
 </body>
